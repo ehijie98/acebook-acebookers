@@ -11,8 +11,8 @@ describe("Post model", () => {
   });
 
   it("has a message", () => {
-    var post = new Post({ message: "some message" });
-    expect(post.message).toEqual("some message");
+    var post = new Post({ title: "some message" });
+    expect(post.title).toEqual("some message");
   });
 
   it("can list all posts", (done) => {
@@ -22,9 +22,9 @@ describe("Post model", () => {
       done();
     });
   });
-
+  // perhaps add a test for saving a post with an image
   it("can save a post", (done) => {
-    var post = new Post({ message: "some message" });
+    var post = new Post({ title: "some message" });
 
     post.save((err) => {
       expect(err).toBeNull();
@@ -32,7 +32,7 @@ describe("Post model", () => {
       Post.find((err, posts) => {
         expect(err).toBeNull();
 
-        expect(posts[0]).toMatchObject({ message: "some message" });
+        expect(posts[0]).toMatchObject({ title: "some message" });
         done();
       });
     });
