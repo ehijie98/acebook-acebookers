@@ -55,11 +55,10 @@ describe("/posts", () => {
     });
 
     test("creates a new post with an image", async (req, res) => {
-      const photo = req.file.filename;
       await request(app)
         .post("/posts", upload.single("image"))
         .set("Authorization", `Bearer ${token}`)
-        .send({ image: photo, token: token });
+        .send({ token: token });
 
       let posts = await Post.find();
       expect(posts.length).toEqual(1);
