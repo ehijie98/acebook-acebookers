@@ -16,9 +16,14 @@ const PostsController = {
     });
   },
   Create: (req, res) => {
-    const postBody = req.body;
+    const postData =  {
+      title: req.body.title,
+      content: req.body.content,
+      photo: req.body.photo,
+      author: req.user_id,
+    }
 
-    const post = new Post(postBody)
+    const post = new Post(postData)
 
     post.save(async (err) => {
       if (err) {

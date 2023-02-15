@@ -10,7 +10,7 @@ const CommentsController = {
       if (err) {
         throw err;
       }
-      const token = await TokenGenerator.jsonwebtoken(req.post_id)
+      const token = await TokenGenerator.jsonwebtoken(req.user_id)
       res.status(200).json({ comments: comments, token: token });
     });
   },
