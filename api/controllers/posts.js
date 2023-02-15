@@ -1,9 +1,12 @@
 const Post = require("../models/post");
+const User = require("../models/user");
 const TokenGenerator = require("../models/token_generator");
+
 
 const PostsController = {
   Index: (req, res) => {
-    Post.find(async (err, posts) => {
+    const newPosts = Post.find().populate('author comments');
+    newPosts.find().sort('-createdAt').find(async (err, posts) => {
       if (err) {
         throw err;
       }
@@ -14,7 +17,6 @@ const PostsController = {
   },
   Create: (req, res) => {
     const postBody = req.body;
-    postBody.author = req.user_id
 
     const post = new Post(postBody)
 
@@ -29,7 +31,7 @@ const PostsController = {
   },
 
   Delete: (req, res) => {
-    Post.deleteOne({ _id: req.params.id }, async (err) => {
+    Post.deleteOne({ _id: req.body._id }, async (err) => {
       if (err) {
         throw err;
       } else {
@@ -41,7 +43,7 @@ const PostsController = {
   },
 
   Update: (req, res) => {
-    Post.updateOne({_id: req.body._id, title: req.body.title, content: req.body.content }, async (err) => {
+    Post.updateOne({_id: req.body._id, content: req.body.content}, async (err) => {
       if (err) {
         throw err;
       } else {

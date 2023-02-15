@@ -1,8 +1,10 @@
 const Comment = require("../models/comment");
+const Post = require("../models/post");
+const User = require("../models/user")
 const TokenGenerator = require("../models/token_generator");
 
 const CommentsController = {
-  //finds a post with post_id
+  // finds a post with post_id
   Index: (req, res) => {
     Comments.find(async (err, comments) => {
       if (err) {
@@ -13,10 +15,13 @@ const CommentsController = {
     });
   },
   Create: (req, res) => {
-    //we need a user_id in the object we pass to new Comment. The object needs to look the same as the model
-    const commentBody = req.body;
-    //in the frontend, we need to pass post_id and content to our Comment component
-    commentBody.user_id = req.user_id;
+    const commentBody = {
+      content: req.body.content,
+      post_id: req.body.post_id,
+      user_id: req.body.user_id,
+      likes: req.body.likes,
+      likers: req.body.likers
+    }
     //we create an instance of the Comment model
     const comment = new Comment(commentBody);
     //we save it to the database 

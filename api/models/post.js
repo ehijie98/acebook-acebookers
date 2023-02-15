@@ -2,8 +2,14 @@ const mongoose = require("mongoose");
 
 
 const PostSchema = new mongoose.Schema({
-      title: String,
-      content: String,
+      title: { 
+        type: String,
+        required: true
+      },
+      content: {
+        type: String,
+        required: true
+      },
       photo: String,
       author: {
         type: mongoose.Schema.Types.ObjectId,

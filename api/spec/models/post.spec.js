@@ -11,7 +11,12 @@ describe("Post model", () => {
   });
 
   it("has a message", () => {
-    var post = new Post({ content: "some message" });
+    var post = new Post({ 
+      title: "message", 
+      content: "some message", 
+      comments: [], 
+      likes: 0 
+    });
     expect(post.content).toEqual("some message");
   });
 
@@ -24,7 +29,12 @@ describe("Post model", () => {
   });
 
   it("can save a post", (done) => {
-    var post = new Post({ content: "some message" });
+    var post = new Post({ 
+      title: "message", 
+      content: "some message", 
+      comments: [], 
+      likes: 0
+    });
 
     post.save((err) => {
       expect(err).toBeNull();
@@ -32,7 +42,7 @@ describe("Post model", () => {
       Post.find((err, posts) => {
         expect(err).toBeNull();
 
-        expect(posts[0]).toMatchObject({ content: "some message" });
+        expect(posts[0].content).toEqual("some message");
         done();
       });
     });

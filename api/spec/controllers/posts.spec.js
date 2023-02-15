@@ -109,7 +109,7 @@ describe("/posts", () => {
         content: "hello again world",
         likes: 0,
         comments: [],
-        token: token,
+        token: token
       });
       expect(response.body.token).toEqual(undefined);
     });
@@ -117,8 +117,19 @@ describe("/posts", () => {
 
   describe("GET, when token is present", () => {
     test("returns every post in the collection", async () => {
-      let post1 = new Post({content: "howdy!"});
-      let post2 = new Post({content: "hola!"});
+      let post1 = new Post({title: "greeting", 
+      content: "howdy!",
+      likes: 0,
+      comments: [],
+      token: token
+    });
+
+      let post2 = new Post({title: "greeting", 
+      content: "hola!",
+      likes: 0,
+      comments: [],
+      token: token
+    });
       await post1.save();
       await post2.save();
       let response = await request(app)
@@ -126,12 +137,24 @@ describe("/posts", () => {
         .set("Authorization", `Bearer ${token}`)
         .send({token: token});
       let contents = response.body.posts.map((post) => ( post.content ));
-      expect(contents).toEqual(["howdy!", "hola!"]);
+      expect(contents).toEqual(["hola!", "howdy!"]);
     })
 
     test("the response code is 200", async () => {
-      let post1 = new Post({content: "howdy!"});
-      let post2 = new Post({content: "hola!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
+      let post2 = new Post({
+        title: "greeting", 
+        content: "hola!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
       await post1.save();
       await post2.save();
       let response = await request(app)
@@ -142,8 +165,20 @@ describe("/posts", () => {
     })
 
     test("returns a new token", async () => {
-      let post1 = new Post({content: "howdy!"});
-      let post2 = new Post({content: "hola!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
+      let post2 = new Post({
+        title: "greeting", 
+        content: "hola!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
       await post1.save();
       await post2.save();
       let response = await request(app)
@@ -158,8 +193,20 @@ describe("/posts", () => {
 
   describe("GET, when token is missing", () => {
     test("returns no posts", async () => {
-      let post1 = new Post({content: "howdy!"});
-      let post2 = new Post({content: "hola!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
+      let post2 = new Post({
+        title: "greeting", 
+        content: "hola!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
       await post1.save();
       await post2.save();
       let response = await request(app)
@@ -168,8 +215,20 @@ describe("/posts", () => {
     })
 
     test("the response code is 401", async () => {
-      let post1 = new Post({content: "howdy!"});
-      let post2 = new Post({content: "hola!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
+      let post2 = new Post({
+        title: "greeting", 
+        content: "hola!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
       await post1.save();
       await post2.save();
       let response = await request(app)
@@ -178,8 +237,20 @@ describe("/posts", () => {
     })
 
     test("does not return a new token", async () => {
-      let post1 = new Post({content: "howdy!"});
-      let post2 = new Post({content: "hola!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token
+      });
+      let post2 = new Post({
+        title: "greeting", 
+        content: "hola!",
+        likes: 0,
+        comments: [],
+        token: token,
+      });
       await post1.save();
       await post2.save();
       let response = await request(app)
@@ -192,14 +263,21 @@ describe("/posts", () => {
     test("deletes the post", async () => {
 
       const post_id = '63ebab0c9a93032525d4c623'
-      let post1 = new Post({_id: post_id, content: "howdy!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token,
+        _id: post_id
+      });
       
       await post1.save();
 
       let response = await request(app)
-        .delete(`/posts/${post_id}`)
+        .delete(`/posts`)
         .set("Authorization", `Bearer ${token}`)
-        .send({token: token});
+        .send({_id: post_id, token: token});
 
         expect(response.status).toEqual(201);
 
@@ -209,13 +287,20 @@ describe("/posts", () => {
 
     test("fails to delete post without present token", async () => {
       const post_id = '63ebab0c9a93032525d4c623'
-      let post1 = new Post({_id: post_id, content: "howdy!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token,
+        _id: post_id
+      });
       
       await post1.save();
 
       let response = await request(app)
         .delete(`/posts/${post_id}`)
-        .send({token: token});
+        .send({_id: post_id, token: token});
 
         expect(response.status).toEqual(401);
 
@@ -227,7 +312,14 @@ describe("/posts", () => {
   describe("PUT, when token is present", () => {
     test("update post with token", async () => {
       const post_id = '63ebab0c9a93032525d4c623'
-      let post1 = new Post({_id: post_id, content: "howdy!"});
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token,
+        _id: post_id
+      });
 
       await post1.save();
       
@@ -240,6 +332,29 @@ describe("/posts", () => {
 
       let posts = await Post.find()
       expect(posts[0].content).toEqual("howdy again!")
+    });
+
+    test("update post without token", async () => {
+      const post_id = '63ebab0c9a93032525d4c623'
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token,
+        _id: post_id
+      });
+
+      await post1.save();
+      
+      let response = await request(app)
+      .put("/posts")
+      .send({_iq: post_id, content: "howdy again!"})
+
+      expect(response.status).toEqual(401)
+
+      let posts = await Post.find()
+      expect(posts[0].content).toEqual("howdy!")
     })
   })
 });
