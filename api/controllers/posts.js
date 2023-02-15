@@ -13,7 +13,11 @@ const PostsController = {
     });
   },
   Create: (req, res) => {
-    const post = new Post(req.body);
+    const postBody = req.body;
+    postBody.author = req.user_id
+
+    const post = new Post(postBody)
+
     post.save(async (err) => {
       if (err) {
         throw err;
