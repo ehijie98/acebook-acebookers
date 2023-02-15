@@ -10,7 +10,7 @@ const SignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch("/users", {
+    fetch("/", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -51,45 +51,58 @@ const SignUpForm = ({ navigate }) => {
     setDateOfBirth(event.target.value);
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Email"
-        id="email"
-        type="text"
-        value={email}
-        onChange={handleEmailChange}
-      />
-      <input
-        placeholder="Password"
-        id="password"
-        type="password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-      <input
-        placeholder="First Name"
-        id="firstName"
-        type="text"
-        value={firstName}
-        onChange={handleFirstNameChange}
-      />
-      <input
-        placeholder="Last Name"
-        id="lastName"
-        type="text"
-        value={lastName}
-        onChange={handleLastNameChange}
-      />
-      <input
-        id="dateOfBirth"
-        type="date"
-        value={dateOfBirth}
-        onChange={handleDateOfBirthChange}
-      />
 
-      <input id="submit" type="submit" value="Submit" />
-    </form>
+  
+
+  return (
+    <div className="row g-3">
+      <form className="row g-1" onSubmit={handleSubmit}>
+        <input
+          placeholder="Email"
+          id="email"
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+        />
+        <input
+          placeholder="Password"
+          id="password"
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+        <input
+          placeholder="First Name"
+          id="firstName"
+          type="text"
+          value={firstName}
+          onChange={handleFirstNameChange}
+        />
+        <input
+          placeholder="Last Name"
+          id="lastName"
+          type="text"
+          value={lastName}
+          onChange={handleLastNameChange}
+        />
+        <input
+          id="dateOfBirth"
+          type="date"
+          value={dateOfBirth}
+          onChange={handleDateOfBirthChange}
+        />
+        <div className="col-12">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            id="submit"
+            value="Submit"
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

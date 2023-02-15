@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+//import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+// don't forget to use className as attribute on target elements (react uses className as attribute instead of class).
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
