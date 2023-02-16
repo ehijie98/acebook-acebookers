@@ -10,6 +10,7 @@ const CommentsController = {
         throw err;
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id)
+
       res.status(200).json({ comments: comments, token: token });
     });
   },
@@ -21,15 +22,17 @@ const CommentsController = {
     }
     //we create an instance of the Comment model
     const comment = new Comment(commentBody);
-    //we save it to the database 
+    //we save it to the database
     comment.save(async (err) => {
       if (err) {
         throw err;
       }
 
-      const token = await TokenGenerator.jsonwebtoken(req.user_id)
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
       //express returns a response object. We set that to a success here
+
       res.status(201).json({ message: commentBody.content, token: token });
+
     });
   },
 
