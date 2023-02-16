@@ -39,11 +39,12 @@ const tokenChecker = (req, res, next) => {
   });
 };
 
-// route setup
+// route setup 
 app.use("/posts", tokenChecker, postsRouter);
 app.use("/comments", tokenChecker, commentsRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

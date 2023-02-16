@@ -50,22 +50,24 @@ const CreateComment = ({ token, post_id, setComments, setToken }) => {
   if (token) {
     return (
       <>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            placeholder="What do you think about this post?"
-            id="newComment"
-            rows="2"
-            cols="50"
-            value={comment}
-            onChange={handleCommentChange}
-          />
-          <input
-            role="submit-button"
-            id="submit"
-            type="submit"
-            value="Submit"
-          />
-        </form>
+        <div className="mb-3">
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className="form-control"
+              placeholder="What do you think about this post?"
+              id="newComment"
+              rows="2"
+              cols="50"
+              value={comment}
+              onChange={handleCommentChange}
+            />
+            <div className="col-auto">
+              <button type="submit" className="btn btn-primary mb-3" id="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
         {error && <p>Comments can only be 150 chars</p>}
       </>
     );

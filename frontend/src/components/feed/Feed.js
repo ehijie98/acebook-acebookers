@@ -25,17 +25,11 @@ const Feed = ({ navigate }) => {
     }
   }, [token]);
 
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   if (token) {
     return (
       <>
       <Navbar />
         <h2>Posts</h2>
-        <button onClick={logout}>Logout</button>
         <CreatePost
           setPosts={setPosts}
           token={token}

@@ -54,46 +54,51 @@ const CreatePost = ({setPosts, token}) => {
   };
 
   return (
-    <div>
+    <div className="mb-3">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
-        <br></br>
+        <label className="form-label" htmlFor="title">
+          Title
+        </label>
+
         <input
+          className="form-control"
           placeholder="Title"
           id="title"
           type="text"
           value={title}
           onChange={handleTitleChange}
         ></input>
-        <br></br>
 
-        <label htmlFor="content">Content:</label>
-        <br></br>
+        <label className="form-label" htmlFor="content">
+          Content:
+        </label>
+
         <textarea
+          className="form-control"
           placeholder="Content"
           id="content"
           name="content"
           type="text"
-          rows="5"
+          rows="3"
           cols="50"
           value={content}
           onChange={handlePostChange}
         ></textarea>
-        <br></br>
 
-        <label htmlFor="photo">Photo:</label>
-        <br></br>
+        <label label className="form-label" htmlFor="photo">
+          Image:
+        </label>
+
         <input
+          className="form-control"
           type="file"
           id="photo"
           name="photo"
           value={photo}
           onChange={handlePhotoChange}
         ></input>
-        <br></br>
-        <br></br>
 
-        <button id="submit" type="submit">
+        <button className="btn btn-primary" id="submit" type="submit">
           Create post
         </button>
       </form>
