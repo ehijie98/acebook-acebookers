@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './Navbar.css';
 
 
-const Navbar = () => {
+const Navbar = ({navigate}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -24,15 +24,21 @@ const Navbar = () => {
         console.log(error);
       });
     }
+
+    const logout = () => {
+      window.localStorage.removeItem("token");
+      navigate("/login");
+    };
+
   return (
-    <nav class="navbar navbar-expand-lg bg-light rounded">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse d-lg-flex">
-          <a class="navbar-brand col-lg-3 me-0" href="/">
+    <nav className="navbar navbar-expand-lg bg-light rounded">
+      <div className="container-fluid">
+        <div className="collapse navbar-collapse d-lg-flex">
+          <a className="navbar-brand col-lg-3 me-0" href="/">
             Acebookers
           </a>
-          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-            <li class="nav-item">
+          <ul className="navbar-nav col-lg-6 justify-content-lg-center">
+            <li className="nav-item">
               <a href="/user/:id">
                 <button className="btn btn-outline-primary" type="submit">
                   <i className="bi bi-person-square"></i>
@@ -68,13 +74,12 @@ const Navbar = () => {
               </form>
             </li>
           </ul>
-          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-            <a href="/logout">
-              <button class="btn btn-outline-dark">
-                <i class="bi bi-box-arrow-right"></i>
+          <div className="d-lg-flex col-lg-3 justify-content-lg-end">
+              <button onClick={logout} className="btn btn-outline-dark">
+                <i className="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </button>
-            </a>
+
           </div>
         </div>
         {searchResults.length > 0 && (

@@ -22,7 +22,7 @@ const LogInForm = ({ navigate }) => {
       console.log("login successful")
       let data = await response.json()
       window.localStorage.setItem("token", data.token)
-      navigate('/posts');
+      navigate('/');
     }
   }
 
