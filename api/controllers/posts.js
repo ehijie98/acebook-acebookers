@@ -56,7 +56,23 @@ const PostsController = {
         res.status(201).json({ message: req.body.content, token: token });
       }
     });
-  }
+  },
+
+  Like: (req, res) => { 
+    Post.findById({_id: req.body._id}, async (err) => {
+      if (err) {
+        throw err;
+      } else {
+        if (!req.body.likers.includes(req.user_id)) {
+          req.body.likes++;
+          req.body.likers.push(req.user_id);
+
+          const token = await TokenGenerator.jsonwebtoken(req.user_id)
+          res.status(201).json({message: "post liked", token: token})
+        }
+      }
+    });
+  },
 };
 
 module.exports = PostsController;
