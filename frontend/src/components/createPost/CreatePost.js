@@ -100,7 +100,7 @@ const CreatePost = ({setPosts, token}) => {
           onChange={handlePhotoChange}
         ></input>
 
-        <button classname="btn btn-primary" id="submit" type="submit">
+        <button className="btn btn-primary" id="submit" type="submit">
           Create post
         </button>
       </form>
