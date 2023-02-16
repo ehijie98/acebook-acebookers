@@ -29,7 +29,6 @@ const Feed = ({ navigate }) => {
     return (
       <>
       <Navbar />
-        <h2>Posts</h2>
         <CreatePost
           setPosts={setPosts}
           token={token}
