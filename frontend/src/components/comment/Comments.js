@@ -27,9 +27,7 @@ const Comments = ({ post_id }) => {
 
   return (
     <>
-      <h4>Comments</h4>
-      <CreateComment post_id={post_id} token={token} setToken={setToken} setComments={setComments}/>
-      <br></br>
+    
       <div id="comments">
   
         {comments
@@ -38,6 +36,12 @@ const Comments = ({ post_id }) => {
             <Comment comment={comment} key={comment._id} post_id={post_id}  />
           ))}
       </div>
+      <br></br>
+      <div className="container-fluid">
+
+      <CreateComment post_id={post_id} token={token} setToken={setToken} setComments={setComments}/>
+      </div>
+      <br></br>
     </>
   );
 };

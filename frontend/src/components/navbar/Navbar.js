@@ -51,7 +51,7 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="/posts">
+              <a href="/">
                 <button className="btn btn-outline-primary" type="submit">
                   <i className="bi bi-chat-square-text"></i>
                   <span> Feed</span>
