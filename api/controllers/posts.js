@@ -1,12 +1,11 @@
 const Post = require("../models/post");
-const User = require("../models/user");
 const TokenGenerator = require("../models/token_generator");
 
 
 const PostsController = {
   Index: (req, res) => {
     const newPosts = Post.find().populate("author");
-    Post.find().sort('-createdAt').find(async (err, posts) => {
+    newPosts.find().sort('-createdAt').find(async (err, posts) => {
       if (err) {
         throw err;
       }
@@ -20,7 +19,7 @@ const PostsController = {
       title: req.body.title,
       content: req.body.content,
       photo: req.body.photo,
-      author: req.user_id,
+      author: req.user_id
     }
 
     const post = new Post(postData)
@@ -31,7 +30,7 @@ const PostsController = {
       }
 
       const token = await TokenGenerator.jsonwebtoken(req.user_id)
-      res.status(201).json({ message: 'OK', token: token });
+      res.status(201).json({ message: postData.content, token: token });
     });
   },
 

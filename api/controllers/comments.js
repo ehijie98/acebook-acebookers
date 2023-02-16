@@ -1,12 +1,10 @@
 const Comment = require("../models/comment");
-const Post = require("../models/post");
-const User = require("../models/user")
 const TokenGenerator = require("../models/token_generator");
 
 const CommentsController = {
   // finds a post with post_id
   Index: (req, res) => {
-    const newComments = Comments.find().populate("post_id")
+    const newComments = Comment.find().populate("user_id");
     newComments.find(async (err, comments) => {
       if (err) {
         throw err;
@@ -31,7 +29,7 @@ const CommentsController = {
 
       const token = await TokenGenerator.jsonwebtoken(req.user_id)
       //express returns a response object. We set that to a success here
-      res.status(201).json({ message: 'OK', token: token });
+      res.status(201).json({ message: commentBody.content, token: token });
     });
   },
 };
