@@ -62,8 +62,9 @@ const CreateComment = ({ token, post_id, setComments, setToken }) => {
               onChange={handleCommentChange}
             />
             <div className="col-auto">
+              <br></br>
               <button type="submit" className="btn btn-primary mb-3" id="submit">
-                Submit
+                Comment
               </button>
             </div>
           </form>

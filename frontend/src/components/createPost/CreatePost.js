@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './Createpost.css';
 // Passing down the necessary props from the Feed component
 const CreatePost = ({setPosts, token}) => {
   const [title, setTitle] = useState("");
@@ -54,10 +54,10 @@ const CreatePost = ({setPosts, token}) => {
   };
 
   return (
-    <div className="mb-3">
+    <div className="container-fluid">
       <form onSubmit={handleSubmit}>
         <label className="form-label" htmlFor="title">
-          Title
+  
         </label>
 
         <input
@@ -70,7 +70,7 @@ const CreatePost = ({setPosts, token}) => {
         ></input>
 
         <label className="form-label" htmlFor="content">
-          Content:
+       
         </label>
 
         <textarea
@@ -86,7 +86,7 @@ const CreatePost = ({setPosts, token}) => {
         ></textarea>
 
         <label label className="form-label" htmlFor="photo">
-          Image:
+      
         </label>
 
         <input
@@ -97,7 +97,7 @@ const CreatePost = ({setPosts, token}) => {
           value={photo}
           onChange={handlePhotoChange}
         ></input>
-
+        <br></br><br></br>
         <button className="btn btn-primary" id="submit" type="submit">
           Create post
         </button>
