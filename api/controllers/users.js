@@ -37,6 +37,7 @@ const UsersController = {
       res.status(500).json({ message: "Error finding user" });
     }
   }
+
 };
 
 module.exports = UsersController;
