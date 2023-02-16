@@ -5,6 +5,10 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  // const Navbar = ({navigate}) => {
+    //   const [searchTerm, setSearchTerm] = useState('');
+    //   const [searchResults, setSearchResults] = useState([]);
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -26,7 +30,10 @@ const Navbar = () => {
     window.localStorage.removeItem("token");
     window.location.href = "/login";
   };
-
+//     const logout = () => {
+//       window.localStorage.removeItem("token");
+//       navigate("/login");
+//     };
   return (
     <nav className="navbar navbar-expand-lg bg-light rounded">
       <div className="container-fluid">
@@ -94,3 +101,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
