@@ -23,6 +23,7 @@ const Profile = ({userId}) => {
       </button>
     );
   }
+
   return (
     <div class="card text-center">
       <div class="card-header"></div>
@@ -45,3 +46,4 @@ const Profile = ({userId}) => {
 }
 
 export default Profile;
+

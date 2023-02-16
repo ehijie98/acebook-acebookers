@@ -29,6 +29,7 @@ const Feed = ({ navigate }) => {
     return (
       <>
       <Navbar />
+
       <div className="container-fluid">
         <div className="card">
         <CreatePost

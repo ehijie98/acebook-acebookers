@@ -65,3 +65,5 @@ cypress/screenshots
 cypress/videos
 frontend/src/components/user/dummyhtml.html
 api/components.md
+package.json
+package-lock.json

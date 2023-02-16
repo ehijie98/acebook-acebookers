@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import './Navbar.css';
 
-
-const Navbar = ({navigate}) => {
+const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+
+  // const Navbar = ({navigate}) => {
+    //   const [searchTerm, setSearchTerm] = useState('');
+    //   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
-
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -23,13 +24,16 @@ const Navbar = ({navigate}) => {
       .catch(error =>{
         console.log(error);
       });
-    }
+  };
 
-    const logout = () => {
-      window.localStorage.removeItem("token");
-      navigate("/login");
-    };
-
+  const handleSignOut = () => {
+    window.localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+//     const logout = () => {
+//       window.localStorage.removeItem("token");
+//       navigate("/login");
+//     };
   return (
     <nav className="navbar navbar-expand-lg bg-light rounded">
       <div className="container-fluid">
@@ -75,11 +79,10 @@ const Navbar = ({navigate}) => {
             </li>
           </ul>
           <div className="d-lg-flex col-lg-3 justify-content-lg-end">
-              <button onClick={logout} className="btn btn-outline-dark">
-                <i className="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </button>
-
+            <button onClick={handleSignOut} className="btn btn-outline-dark">
+              <i className="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
+            </button>
           </div>
         </div>
         {searchResults.length > 0 && (
@@ -95,6 +98,8 @@ const Navbar = ({navigate}) => {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
+
+
