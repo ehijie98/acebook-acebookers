@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Comment = ({comment}) => {
+const Comment = ({comment, post_id}) => {
   return(
-    <article data-cy="comment" key={ comment._id }>{ comment.content }<br></br><br></br></article>
+    <article data-cy="comment" key={ comment._id } post_id={post_id}>{ comment.content }<br></br><br></br></article>
   )
 }
 
