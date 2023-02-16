@@ -39,8 +39,7 @@ const tokenChecker = (req, res, next) => {
   });
 };
 
-// route setup
-app.use("/posts", tokenChecker, postsRouter);
+// route setup", tokenChecker, postsRouter);
 app.use("/comments", tokenChecker, commentsRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
