@@ -39,13 +39,12 @@ const tokenChecker = (req, res, next) => {
   });
 };
 
-// route setup
+// route setup 
 app.use("/posts", tokenChecker, postsRouter);
 app.use("/comments", tokenChecker, commentsRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
-//register the comments route. When a comment comes in it will be routed to the commentsRouter
-app.use("/comments", tokenChecker, commentsRouter);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

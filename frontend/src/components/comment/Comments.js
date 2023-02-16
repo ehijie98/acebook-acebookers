@@ -28,14 +28,14 @@ const Comments = ({ post_id }) => {
   return (
     <>
       <h4>Comments</h4>
-      <CreateComment post_id={post_id} token={token} />
+      <CreateComment post_id={post_id} token={token} setToken={setToken} setComments={setComments}/>
       <br></br>
       <div id="comments">
-        {console.log(comments)}
+  
         {comments
           .filter((comment) => comment.post_id === post_id)
           .map((comment) => (
-            <Comment comment={comment} key={comment._id} />
+            <Comment comment={comment} key={comment._id} post_id={post_id}  />
           ))}
       </div>
     </>

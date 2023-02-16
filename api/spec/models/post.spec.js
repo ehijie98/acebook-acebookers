@@ -14,7 +14,6 @@ describe("Post model", () => {
     var post = new Post({ 
       title: "message", 
       content: "some message", 
-      comments: [], 
       likes: 0 
     });
     expect(post.content).toEqual("some message");
@@ -32,7 +31,6 @@ describe("Post model", () => {
     var post = new Post({ 
       title: "message", 
       content: "some message", 
-      comments: [], 
       likes: 0
     });
 
@@ -52,7 +50,6 @@ describe("Post model", () => {
     var post = new Post({ 
       title: "message", 
       content: "some message", 
-      comments: [], 
     });
 
     post.save((err) => {

@@ -10,7 +10,7 @@ let token;
 
 describe("/posts", () => {
   beforeAll( async () => {
-    const user = new User({email: "test@test.com", password: "12345678", firstName: "John", lastName: "Brooks" });
+    const user = new User({email: "test@test.com", password: "12345678", firstName: "firstName", lastName: "lastName" });
     await user.save();
 
     user_id = user._id;
@@ -40,7 +40,6 @@ describe("/posts", () => {
         .send({ title: "greeting",
           content: "hello world",
           likes: 0,
-          comments: [],
           token: token,
         });
       expect(response.status).toEqual(201);
@@ -53,7 +52,6 @@ describe("/posts", () => {
         .send({ title: "greeting",
           content: "hello world",
           likes: 0,
-          comments: [],
           token: token,
         });
       let posts = await Post.find();
@@ -68,7 +66,6 @@ describe("/posts", () => {
         .send({ title: "greeting",
           content: "hello world",
           likes: 0,
-          comments: [],
           token: token,
         });
       let newPayload = JWT.decode(response.body.token, process.env.JWT_SECRET);
@@ -84,7 +81,6 @@ describe("/posts", () => {
         .send({ title: "greeting",
           content: "hello again world",
           likes: 0,
-          comments: [],
           token: token,
         });
       expect(response.status).toEqual(401);
@@ -96,7 +92,6 @@ describe("/posts", () => {
         .send({ title: "greeting",
         content: "hello again world",
         likes: 0,
-        comments: [],
         token: token,
       });
       let posts = await Post.find();
@@ -109,7 +104,6 @@ describe("/posts", () => {
         .send({ title: "greeting",
         content: "hello again world",
         likes: 0,
-        comments: [],
         token: token
       });
       expect(response.body.token).toEqual(undefined);
@@ -121,14 +115,12 @@ describe("/posts", () => {
       let post1 = new Post({title: "greeting", 
       content: "howdy!",
       likes: 0,
-      comments: [],
       token: token
     });
 
       let post2 = new Post({title: "greeting", 
       content: "hola!",
       likes: 0,
-      comments: [],
       token: token
     });
       await post1.save();
@@ -146,14 +138,12 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token
       });
       let post2 = new Post({
         title: "greeting", 
         content: "hola!",
         likes: 0,
-        comments: [],
         token: token
       });
       await post1.save();
@@ -170,14 +160,12 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token
       });
       let post2 = new Post({
         title: "greeting", 
         content: "hola!",
         likes: 0,
-        comments: [],
         token: token
       });
       await post1.save();
@@ -198,14 +186,12 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token
       });
       let post2 = new Post({
         title: "greeting", 
         content: "hola!",
         likes: 0,
-        comments: [],
         token: token
       });
       await post1.save();
@@ -220,14 +206,12 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token
       });
       let post2 = new Post({
         title: "greeting", 
         content: "hola!",
         likes: 0,
-        comments: [],
         token: token
       });
       await post1.save();
@@ -242,14 +226,12 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token
       });
       let post2 = new Post({
         title: "greeting", 
         content: "hola!",
         likes: 0,
-        comments: [],
         token: token,
       });
       await post1.save();
@@ -268,7 +250,6 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token,
         _id: post_id
       });
@@ -292,7 +273,6 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token,
         _id: post_id
       });
@@ -317,7 +297,6 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token,
         _id: post_id
       });
@@ -341,7 +320,6 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token,
         _id: post_id
       });
@@ -366,7 +344,6 @@ describe("/posts", () => {
         title: "greeting", 
         content: "howdy!",
         likes: 0,
-        comments: [],
         token: token,
         _id: post_id
       });
@@ -376,7 +353,7 @@ describe("/posts", () => {
       let response = await request(app)
       .patch("/posts/like")
       .set("Authorization", `Bearer ${token}`)
-      .send({_id: post_id, author: user_id, token: token})
+      .send({_id: post_id, token: token})
 
       expect(response.status).toEqual(201);
 

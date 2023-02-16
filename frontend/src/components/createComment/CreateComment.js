@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CreateComment = ({ token, post_id }) => {
+const CreateComment = ({ token, post_id, setComments, setToken }) => {
   const [comment, setComment] = useState("");
   const [error, setError] = useState(false);
 
@@ -29,31 +29,45 @@ const CreateComment = ({ token, post_id }) => {
     });
 
     if (response.status !== 201) {
-      console.log("new comment created");
+      console.log("new comment not created");
     } else {
-      console.log("comment NOT created");
+      console.log("new comment created");
+      let data = await response.json()
+      window.localStorage.setItem("token", data.token)
+      setComment("")
+      let responseTwo = await fetch("/comments", {
+        headers: {
+          Authorization: `Bearer ${data.token}`
+        }
+      })
+      let dataTwo = await responseTwo.json();
+      console.log(dataTwo.comments)
+      setComments(dataTwo.comments) 
+      setToken(dataTwo.token)
     }
   };
 
   if (token) {
     return (
       <>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            placeholder="What do you think about this post?"
-            id="newComment"
-            rows="2"
-            cols="50"
-            value={comment}
-            onChange={handleCommentChange}
-          />
-          <input
-            role="submit-button"
-            id="submit"
-            type="submit"
-            value="Submit"
-          />
-        </form>
+        <div className="mb-3">
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className="form-control"
+              placeholder="What do you think about this post?"
+              id="newComment"
+              rows="2"
+              cols="50"
+              value={comment}
+              onChange={handleCommentChange}
+            />
+            <div className="col-auto">
+              <button type="submit" className="btn btn-primary mb-3" id="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
         {error && <p>Comments can only be 150 chars</p>}
       </>
     );
