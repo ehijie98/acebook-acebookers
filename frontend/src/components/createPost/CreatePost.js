@@ -38,8 +38,6 @@ const CreatePost = ({setPosts, token}) => {
         // As we are using setPosts function/hook to change state, feed is re-rendered
         setPosts(dataTwo.posts)
         window.localStorage.setItem("token", dataTwo.token)
-        // printing the array of posts to the console
-        console.log(dataTwo.posts)
     }
   };
 

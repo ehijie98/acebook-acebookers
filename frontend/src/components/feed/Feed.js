@@ -35,7 +35,7 @@ const Feed = ({ navigate }) => {
           token={token}
         /><br></br>
         <div id="feed" role="feed">
-          {console.log(posts)}
+          {/* {console.log(posts)} */}
           {posts.map((post) => (
             <Post post={post} key={post._id} />
           ))}
