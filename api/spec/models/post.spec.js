@@ -47,4 +47,25 @@ describe("Post model", () => {
       });
     });
   });
+
+  it("initially has zero likes", () => {
+    var post = new Post({ 
+      title: "message", 
+      content: "some message", 
+      comments: [], 
+    });
+
+    post.save((err) => {
+      expect(err).toBeNull();
+
+      Post.find((err, posts) => {
+        expect(err).toBeNull();
+
+        expect(posts[0].likes).toEqual(0);
+        done();
+      });
+    });
+
+    expect(post.likes).toEqual(0);
+  })
 });

@@ -13,6 +13,7 @@ describe("/posts", () => {
     const user = new User({email: "test@test.com", password: "12345678", firstName: "John", lastName: "Brooks" });
     await user.save();
 
+    user_id = user._id;
     token = JWT.sign({
       user_id: user.id,
       // Backdate this token of 5 minutes
@@ -355,6 +356,33 @@ describe("/posts", () => {
 
       let posts = await Post.find()
       expect(posts[0].content).toEqual("howdy!")
+    })
+  })
+
+  describe("PATCH, when token is present", () => {
+    test('it updates likes and likers array', async () => {
+      const post_id = '63ebab0c9a93032525d4c623'
+      let post1 = new Post({
+        title: "greeting", 
+        content: "howdy!",
+        likes: 0,
+        comments: [],
+        token: token,
+        _id: post_id
+      });
+
+      await post1.save();
+
+      let response = await request(app)
+      .patch("/posts/like")
+      .set("Authorization", `Bearer ${token}`)
+      .send({_id: post_id, author: user_id, token: token})
+
+      expect(response.status).toEqual(201);
+
+      let posts = await Post.find()
+      expect(posts[0].likes).toEqual(1)
+      expect(post[0].likers).toEqual[user_id]
     })
   })
 });
