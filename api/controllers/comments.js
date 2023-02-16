@@ -6,7 +6,8 @@ const TokenGenerator = require("../models/token_generator");
 const CommentsController = {
   // finds a post with post_id
   Index: (req, res) => {
-    Comments.find(async (err, comments) => {
+    const newComments = Comments.find().populate("post_id")
+    newComments.find(async (err, comments) => {
       if (err) {
         throw err;
       }
@@ -18,9 +19,7 @@ const CommentsController = {
     const commentBody = {
       content: req.body.content,
       post_id: req.body.post_id,
-      user_id: req.body.user_id,
-      likes: req.body.likes,
-      likers: req.body.likers
+      user_id: req.user_id
     }
     //we create an instance of the Comment model
     const comment = new Comment(commentBody);
