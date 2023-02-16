@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
 import CreatePost from "../createPost/CreatePost";
 import Navbar from "../navbar/Navbar";
-import SignUpForm from "../user/SignUpForm"
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
@@ -35,8 +34,6 @@ const Feed = ({ navigate }) => {
     return (
       <>
       <Navbar />
-        <h2>Posts</h2>
-        <button onClick={logout}>Logout</button>
         <CreatePost
           setPosts={setPosts}
           token={token}
@@ -50,7 +47,7 @@ const Feed = ({ navigate }) => {
       </>
     );
   } else {
-    navigate("/signup");
+    navigate("/signin");
   }
 };
 
