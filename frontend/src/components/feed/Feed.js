@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
 import CreatePost from "../createPost/CreatePost";
 import Navbar from "../navbar/Navbar";
+import SignUpForm from "../user/SignUpForm"
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
@@ -49,7 +50,7 @@ const Feed = ({ navigate }) => {
       </>
     );
   } else {
-    navigate("/signin");
+    navigate("/signup");
   }
 };
 
