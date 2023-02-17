@@ -39,6 +39,32 @@ const tokenChecker = (req, res, next) => {
   });
 };
 
+// attempting to make user available to all frontend components for verification
+
+// const checkUser = (req, res, next) => {
+//   let token;
+//   const authHeader = req.get("Authorization")
+
+//   if(authHeader) {
+//     token = authHeader.slice(7)
+//   }
+
+//     JWT.verify(token, process.env.JWT_SECRET, async (err, payload) => {
+//       if(err) {
+//         console.log(err)
+//         res.locals.user = null;
+//         next();
+//         res.status(401).json({message: "auth error"});
+//       } else {
+//         // console.log(payload);
+//         let user = await User.findById(payload.user_id);
+//         res.locals.user = user
+//         next();
+//       }
+//     });
+//   } 
+
+
 // route setup 
 app.use("/posts", tokenChecker, postsRouter);
 app.use("/comments", tokenChecker, commentsRouter);

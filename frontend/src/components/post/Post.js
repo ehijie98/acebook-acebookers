@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Comments from "../comment/Comments";
 import "./Post.css" 
 
-const Post = ({ post, token, setPosts }) => {
+const Post = ({ post, token, setPosts}) => {
   //if statement for whether there is a photo or not
   // <div className
+  const [show, setShow] = useState(true);
+
+  // if statement to not show delete button if current user did not create the post
+  // tried to get it to work with res.locals.user in middleware 
+
+
+  
+  //   useEffect(()=> {
+  //   if (user_id !== post.author) {
+  //     setShow(false)
+  //   }
+  // }, [])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,11 +65,12 @@ const Post = ({ post, token, setPosts }) => {
           <a href="/like-post">
             <button className="btn btn-primary me-md-2" type="button"> {post.likes > 0 ? post.likes: ''}<i className="bi bi-hand-thumbs-up"></i></button>
           </a>
-          {/* <form onSubmit={handleSubmit}>
-            <button className="btn btn-danger" type="button"><i className="bi bi-trash"></i></button>
-          </form> */}
+          {
+          show === true ?
             <button className="btn btn-danger" type="button" onClick={handleSubmit}><i className="bi bi-trash"></i></button>
-          </div>
+          : ""
+          }
+            </div>
       </div>
       <br></br>
       <Comments post_id={post._id} />
