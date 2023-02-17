@@ -44,7 +44,7 @@ const Feed = ({ navigate }) => {
           {/*  <h4 className="bg-primary-subtle text-emphasis-primary">Posts</h4> */}
           {/* {console.log(posts)} */}
           {posts.map((post) => (
-            <Post post={post} key={post._id} />
+            <Post post={post} token={token} setPosts={setPosts} key={post._id} />
           ))}
         </div>
         </div>
