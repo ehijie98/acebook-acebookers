@@ -29,8 +29,9 @@ const Feed = ({ navigate }) => {
     return (
       <>
       <Navbar />
-
-      <div className="container-fluid">
+      <body className="text-center">
+        <main className="col-md-6  mx-auto">
+        <div className="container-fluid">
         <div className="card">
         <CreatePost
           setPosts={setPosts}
@@ -49,6 +50,8 @@ const Feed = ({ navigate }) => {
         </div>
         </div>
       </div>
+      </main>
+      </body>
       </>
     );
   } else {
