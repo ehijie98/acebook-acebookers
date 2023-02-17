@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
+// import "./SignUpForm.js";
 
 const Profile = ({ userId }) => {
   const [user, setUser] = useState(null);
