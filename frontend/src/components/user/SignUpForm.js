@@ -6,29 +6,42 @@ const SignUpForm = ({ navigate }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [emailError, setEmailError] = useState(false);
+
+  const validateEmail = () => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    fetch("/users", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        firstName: firstName,
-        lastName: lastName,
-        dateOfBirth: dateOfBirth
-      }),
-    }).then((response) => {
-      if (response.status === 201) {
-        navigate("/login");
-      } else {
-        navigate("/signup");
+    if (validateEmail()) {
+      setEmailError(false);
+      fetch("/users", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          firstName: firstName,
+          lastName: lastName,
+          dateOfBirth: dateOfBirth
+        }),
+      }).then((response) => {
+        if (response.status === 201) {
+          navigate("/login");
+        } else {
+          navigate("/signup");
+        }
+      })}
+      else {
+        setEmailError(true); 
       }
-    });
   };
 
   const handleEmailChange = (event) => {
@@ -52,6 +65,7 @@ const SignUpForm = ({ navigate }) => {
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <input
         placeholder="Email"
@@ -89,7 +103,10 @@ const SignUpForm = ({ navigate }) => {
       />
 
       <input id="submit" type="submit" value="Submit" />
+
     </form>
+    {emailError && <p>invalid email address</p>}
+    </>
   );
 };
 
