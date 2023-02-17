@@ -35,15 +35,17 @@ const PostsController = {
   },
 
   Delete: (req, res) => {
-    Post.deleteOne({_id: req.body._id}, async (err) => {
-      if (err) {
-        throw err;
-      } else {
-
-        const token = await TokenGenerator.jsonwebtoken(req.user_id);
-        res.status(201).json({ message: "post deleted", token: token });
-      }
+    // if (req.user_id === req.body.author) {
+        Post.deleteOne({_id: req.body._id}, async (err) => {
+        if (err) {
+          throw err;
+        } else {
+          const token = await TokenGenerator.jsonwebtoken(req.user_id);
+          res.status(201).json({ message: "post deleted", token: token });
+       } 
     });
+  // }
+    
   },
 
   Update: (req, res) => {
