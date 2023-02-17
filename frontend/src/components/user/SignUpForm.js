@@ -82,7 +82,7 @@ const SignUpForm = ({ navigate }) => {
         value={password}
         onChange={handlePasswordChange}
         required 
-        pattern="(?=.*?[#?!@$%^&*-\]\[])"
+        // pattern="(?=.*?[#?!@$%^&*-\]\[])"
         min="8"
         max="20"
         

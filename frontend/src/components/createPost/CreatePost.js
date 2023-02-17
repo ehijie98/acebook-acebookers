@@ -85,7 +85,7 @@ const CreatePost = ({setPosts, token}) => {
           onChange={handlePostChange}
         ></textarea>
 
-        <label label className="form-label" htmlFor="photo">
+        <label className="form-label" htmlFor="photo">
       
         </label>
 
