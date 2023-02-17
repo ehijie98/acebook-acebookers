@@ -72,10 +72,10 @@ const SignUpForm = ({ navigate }) => {
           <form onSubmit={handleSubmit} id="form-signin">
             <img
               className="mb-4"
-              src="https://postimgs.org/img/logo.png"
+              src="https://i.postimg.cc/4NCjz5PZ/Acebook-logo-removebg-preview.png"
               alt=""
-              width="72"
-              height="57"
+              width="300"
+              height="300"
             ></img>
 
             <h1 className="h3 mb-3 fw-normal">Join Us</h1>
