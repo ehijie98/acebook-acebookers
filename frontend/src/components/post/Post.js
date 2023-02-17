@@ -18,7 +18,9 @@ const Post = ({ post }) => {
           {post.photo}
           </div>
           <div class="justify-content d-flex justify-content-between p-2">
+          <a href="/like-post">
             <button class="btn btn-primary me-md-2" type="button"> {post.likes > 0 ? post.likes: ''}<i class="bi bi-hand-thumbs-up"></i></button>
+          </a>
             <button class="btn btn-danger" type="button"><i class="bi bi-trash"></i></button>
           </div>
       </div>
