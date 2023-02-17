@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import "./LoginForm.css";
+
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -36,45 +38,50 @@ const LogInForm = ({ navigate }) => {
 
 
     return (
-      <div className="col-md-4">
-        <form className="row g-3 needs-validation" onSubmit={handleSubmit}>
-          <input
-            className="form-control"
-            placeholder="Email"
-            id="email"
-            type="text"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-          <input
-            className="form-control"
-            placeholder="Password"
-            id="password"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-          <div className="col-12">
-            <button className="btn btn-primary" type="submit">
-              Log In
-            </button>
-          </div>
-
-          <div>
-            <p>New to Acebookers? Sign up here!</p>
-            <div className="col-12">
-              <a href="/signup">
-                <button className="btn btn-primary" type="button">
-                  Sign up
+      <body className="text-center">
+        <main className="form-signin w-100 m-auto">
+          <div className="form-floating">
+            <h1 className="h3 mb-3 fw-normal">Log In</h1>
+            <form className="row g-3 needs-validation" onSubmit={handleSubmit}>
+              <input
+                className="form-control"
+                placeholder="Email"
+                id="email"
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+              <input
+                className="form-control"
+                placeholder="Password"
+                id="password"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+                minLength={8}
+              />
+              <div className="col-12">
+                  <button className="btn btn-primary active" type="submit">
+                  Log In
                 </button>
-              </a>
-            </div>
+              </div>
+
+              <div>
+                <p>New to Acebookers? Sign up here!</p>
+                <div className="col-12">
+                  <a href="/signup">
+                    <button className="btn btn-primary active" type="button">
+                      Sign up
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </form>
           </div>
-          
-        </form>
-      </div>
+        </main>
+      </body>
     );
 }
 
