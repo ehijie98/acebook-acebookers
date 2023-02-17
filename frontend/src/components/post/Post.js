@@ -63,7 +63,7 @@ const Post = ({ post, token, setPosts}) => {
           </div>
           <div className="justify-content d-flex justify-content-between p-2">
           <a href="/like-post">
-            <button className="btn btn-primary me-md-2" type="button"> {post.likes > 0 ? post.likes: ''}<i className="bi bi-hand-thumbs-up"></i></button>
+            <button className="btn btn-primary active me-md-2" type="button"> {post.likes > 0 ? post.likes: ''}<i className="bi bi-hand-thumbs-up"></i></button>
           </a>
           {
           show === true ?

@@ -34,7 +34,7 @@ const Profile = ({userId}) => {
           post count
           user since
         </p>
-        <a href="/posts/:id" class="btn btn-primary">
+        <a href="/posts/:id" class="btn btn-primary ">
           See Posts
         </a>
       </div>
