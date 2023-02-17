@@ -73,6 +73,7 @@ const SignUpForm = ({ navigate }) => {
         type="text"
         value={email}
         onChange={handleEmailChange}
+        required
       />
       <input
         placeholder="Password"
@@ -80,6 +81,11 @@ const SignUpForm = ({ navigate }) => {
         type="password"
         value={password}
         onChange={handlePasswordChange}
+        required 
+        // pattern="(?=.*?[#?!@$%^&*-\]\[])"
+        min="8"
+        max="20"
+        
       />
       <input
         placeholder="First Name"
@@ -87,6 +93,7 @@ const SignUpForm = ({ navigate }) => {
         type="text"
         value={firstName}
         onChange={handleFirstNameChange}
+        required
       />
       <input
         placeholder="Last Name"
@@ -94,16 +101,27 @@ const SignUpForm = ({ navigate }) => {
         type="text"
         value={lastName}
         onChange={handleLastNameChange}
+        required
       />
       <input
         id="dateOfBirth"
         type="date"
         value={dateOfBirth}
         onChange={handleDateOfBirthChange}
+        required
       />
 
-      <input id="submit" type="submit" value="Submit" />
+      <input id="submit" type="submit" value="Sign up" />
 
+      <div>
+        <h4>Already have an account?</h4>
+        <div>
+          <a href="/login">
+            <button type="button">Log in</button>
+          </a>
+        </div>
+      </div>
+      
     </form>
     {emailError && <p>invalid email address</p>}
     </>

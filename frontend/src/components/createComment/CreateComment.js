@@ -54,7 +54,7 @@ const CreateComment = ({ token, post_id, setComments, setToken }) => {
           <form onSubmit={handleSubmit}>
             <textarea
               className="form-control"
-              placeholder="What do you think about this post?"
+              placeholder="Add comment..."
               id="newComment"
               rows="2"
               cols="50"

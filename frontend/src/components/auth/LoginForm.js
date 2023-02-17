@@ -45,6 +45,7 @@ const LogInForm = ({ navigate }) => {
             type="text"
             value={email}
             onChange={handleEmailChange}
+            required
           />
           <input
             className="form-control"
@@ -53,12 +54,25 @@ const LogInForm = ({ navigate }) => {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            required
           />
           <div className="col-12">
             <button className="btn btn-primary" type="submit">
               Log In
             </button>
           </div>
+
+          <div>
+            <p>New to Acebookers? Sign up here!</p>
+            <div className="col-12">
+              <a href="/signup">
+                <button className="btn btn-primary" type="button">
+                  Sign up
+                </button>
+              </a>
+            </div>
+          </div>
+          
         </form>
       </div>
     );
