@@ -8,7 +8,7 @@ const Post = ({ post, token, setPosts }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("Handle submit executed")
     let response = await fetch("/posts", {
       method: "delete",
       headers: {
@@ -28,7 +28,7 @@ const Post = ({ post, token, setPosts }) => {
         headers: {
           Authorization: `Bearer ${data.token}`,
         }
-      })
+      });
       let dataTwo = await responseTwo.json();
       setPosts(dataTwo.posts)
       window.localStorage.setItem("token", dataTwo.token)
@@ -53,9 +53,10 @@ const Post = ({ post, token, setPosts }) => {
           <a href="/like-post">
             <button className="btn btn-primary me-md-2" type="button"> {post.likes > 0 ? post.likes: ''}<i className="bi bi-hand-thumbs-up"></i></button>
           </a>
-          <form onSubmit={handleSubmit}>
+          {/* <form onSubmit={handleSubmit}>
             <button className="btn btn-danger" type="button"><i className="bi bi-trash"></i></button>
-          </form>
+          </form> */}
+            <button className="btn btn-danger" type="button" onClick={handleSubmit}><i className="bi bi-trash"></i></button>
           </div>
       </div>
       <br></br>
