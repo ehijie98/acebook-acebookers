@@ -63,7 +63,7 @@ const LogInForm = ({ navigate }) => {
           </div>
 
           <div>
-            <h5>New to Acebookers? Sign up here!</h5>
+            <p>New to Acebookers? Sign up here!</p>
             <div className="col-12">
               <a href="/signup">
                 <button className="btn btn-primary" type="button">
