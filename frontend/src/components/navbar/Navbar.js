@@ -43,7 +43,7 @@ const Navbar = () => {
           </a>
           <ul className="navbar-nav col-lg-6 justify-content-lg-center">
             <li className="nav-item">
-              <a href="/user/:id">
+              <a href="`/user/{userId}`">
                 <button className="btn btn-outline-primary" type="submit">
                   <i className="bi bi-person-square"></i>
                   <span> Profile</span>

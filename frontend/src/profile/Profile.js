@@ -5,14 +5,24 @@ const Profile = ({userId}) => {
   const [user, setUser] = useState(null);
 
   useEffect(() =>{
-    fetch(`/users/${userId}`)
+    fetch(`/users/user${userId}`)
       .then(response => response.json())
       .then(data => setUser(data))
       .catch(error => console.log(error));
   }, [userId]);
 
-
-
+  if (!user){
+    return (
+      <button class="btn btn-primary" type="button" disabled>
+        <span
+          class="spinner-grow spinner-grow-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        Loading...
+      </button>
+    );
+  }
   return (
     <div class="card text-center">
       <div class="card-header"></div>
@@ -35,4 +45,3 @@ const Profile = ({userId}) => {
 }
 
 export default Profile;
-
