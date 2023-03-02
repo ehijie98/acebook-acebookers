@@ -1,12 +1,4 @@
-
-[![codecov](https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/main/graph/badge.svg?token=12QW38TZL4)](https://codecov.io/gh/ZZ3333/acebook-acebookers)
-
-<a href="https://codecov.io/gh/ZZ3333/acebook-acebookers" > 
- <img src="https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/main/graph/badge.svg?token=12QW38TZL4"/> 
- </a>
-
- .. image:: https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/main/graph/badge.svg?token=12QW38TZL4 
- :target: https://codecov.io/gh/ZZ3333/acebook-acebookers
+[![codecov](https://codecov.io/gh/nibble0101/learn-test-coverage/branch/master/graph/badge.svg?token=H5LANOBRH6)](https://codecov.io/gh/nibble0101/learn-test-coverage)
 
 # Acebook
 
