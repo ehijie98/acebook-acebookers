@@ -1,3 +1,13 @@
+
+[![codecov](https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/main/graph/badge.svg?token=12QW38TZL4)](https://codecov.io/gh/ZZ3333/acebook-acebookers)
+
+<a href="https://codecov.io/gh/ZZ3333/acebook-acebookers" > 
+ <img src="https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/main/graph/badge.svg?token=12QW38TZL4"/> 
+ </a>
+
+ .. image:: https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/main/graph/badge.svg?token=12QW38TZL4 
+ :target: https://codecov.io/gh/ZZ3333/acebook-acebookers
+
 # Acebook
 
 In this project, you are tasked with working on an existing application. A significant part of the challenge will be to familiarise yourself with the codebase you've inherited, as you work to **improve and extend** it.
