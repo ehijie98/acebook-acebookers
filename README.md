@@ -4,8 +4,7 @@
  <img src="https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/testing_coverage/graph/badge.svg?token=12QW38TZL4"/> 
  </a>
 
- .. image:: https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/testing_coverage/graph/badge.svg?token=12QW38TZL4 
- :target: https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/testing_coverage
+https://codecov.io/gh/ZZ3333/acebook-acebookers/branch/testing_coverage/graphs/icicle.svg?token=12QW38TZL4
 
 # Acebook
 
